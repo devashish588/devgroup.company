@@ -1,25 +1,16 @@
+import React from 'react';
 import './globals.css';
-import { Inter } from 'next/font/google';
-import Header from '@/components/Header';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'DevGroup – Software Engineering & AI Integration',
-  description: 'Boutique consultancy delivering production‑grade web platforms, RAG pipelines, and high‑concurrency cloud architectures.',
+  title: 'DEVGROUP. — Hard engineering for complex problems.',
+  description:
+    'Boutique software engineering consultancy. We design, build, and ship production-ready web platforms, RAG pipelines, and data-intensive applications.',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.className}>
-      <body className="bg-background text-gray-900 antialiased">
-        <Header />
-        {children}
-      </body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   );
 }

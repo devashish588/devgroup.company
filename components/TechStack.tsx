@@ -1,43 +1,60 @@
+"use client";
+import React from 'react';
 import { motion } from 'framer-motion';
 
-
 const techStack = [
-  { name: 'Next.js', src: '/api/placeholder/60/60?text=Next.js' },
-  { name: 'TypeScript', src: '/api/placeholder/60/60?text=TS' },
-  { name: 'Python', src: '/api/placeholder/60/60?text=Py' },
-  { name: 'FastAPI', src: '/api/placeholder/60/60?text=FastAPI' },
-  { name: 'PostgreSQL', src: '/api/placeholder/60/60?text=PG' },
-  { name: 'Tailwind CSS', src: '/api/placeholder/60/60?text=Tailwind' },
-  { name: 'Vercel', src: '/api/placeholder/60/60?text=Vercel' },
-  { name: 'AWS', src: '/api/placeholder/60/60?text=AWS' },
+  { name: 'Next.js', emoji: '▲' },
+  { name: 'TypeScript', emoji: 'TS' },
+  { name: 'Python', emoji: '🐍' },
+  { name: 'FastAPI', emoji: '⚡' },
+  { name: 'PostgreSQL', emoji: '🐘' },
+  { name: 'Tailwind CSS', emoji: '🎨' },
+  { name: 'Vercel', emoji: '◆' },
+  { name: 'AWS', emoji: '☁️' },
+  { name: 'Docker', emoji: '🐳' },
+  { name: 'LangChain', emoji: '🔗' },
 ];
 
 export default function TechStack() {
   return (
-    <section className="max-w-7xl mx-auto py-12" id="tech-stack">
-      <motion.h2
-        className="text-3xl font-bold text-center mb-8 text-gray-900"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
-        Tech Stack
-      </motion.h2>
-      <motion.div
-        className="flex overflow-x-auto space-x-8 justify-center py-4"
-        initial={{ x: 200, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      >
-        {techStack.map((tech) => (
-          <div key={tech.name} className="flex flex-col items-center">
-            <img src={tech.src} alt={tech.name} className="w-12 h-12 object-contain" />
-            <span className="mt-2 text-sm text-gray-700">{tech.name}</span>
-          </div>
-        ))}
-      </motion.div>
+    <section className="py-24 px-6 bg-[#0a0f1e]" id="tech-stack">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="text-sm font-semibold text-cyan-400 uppercase tracking-widest mb-3 block">Tools & Technologies</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            Our Tech Stack
+          </h2>
+        </motion.div>
+
+        <motion.div
+          className="flex flex-wrap gap-4 justify-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          {techStack.map((tech, i) => (
+            <motion.div
+              key={tech.name}
+              className="glass-card flex items-center gap-3 px-5 py-3 rounded-2xl hover:border-white/20 transition-all duration-200 cursor-default"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: i * 0.05 }}
+              whileHover={{ y: -3, scale: 1.04 }}
+            >
+              <span className="text-lg">{tech.emoji}</span>
+              <span className="text-sm font-semibold text-slate-300">{tech.name}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }
